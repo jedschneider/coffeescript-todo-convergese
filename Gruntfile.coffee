@@ -7,7 +7,7 @@ module.exports = (grunt) ->
 
     watch:
         files: '**/*.coffee'
-        tasks: ['test']
+        tasks: ['coffee']
 
     jasmine:
       src: '<%= meta.src %>'
@@ -18,12 +18,30 @@ module.exports = (grunt) ->
     coffee:
       compile:
         files:
-          'src/kata_src.js': ['src/*.coffee']
-          'spec/kata_spec.js': ['spec/*.coffee']
+          'js/app.js': [
+            'src/app.coffee'
+          ]
+          'spec/app_spec.js': [
+            'spec/*.coffee'
+          ]
+
+    bowercopy:
+      options:
+        clean: true
+
+      glob:
+        options:
+          destPrefix: 'lib'
+        files:
+          'js/todomvc-common'  : 'todomvc-common/*.js'
+          'js/jquery'          : 'jquery/dist/jquery.js'
+          'js/underscore'      : 'underscore/*.js'
+          'css/todomvc-common' : 'todomvc-common/*.css'
 
   grunt.loadNpmTasks('grunt-contrib-watch')
   grunt.loadNpmTasks('grunt-contrib-coffee')
   grunt.loadNpmTasks('grunt-contrib-jasmine')
+  grunt.loadNpmTasks('grunt-bowercopy')
 
 
   grunt.registerTask('test', ['coffee', 'jasmine'])

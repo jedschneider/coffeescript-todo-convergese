@@ -1,2 +1,6 @@
 _SpecRunner.html
 node_modules
+js
+lib
+.grunt
+
