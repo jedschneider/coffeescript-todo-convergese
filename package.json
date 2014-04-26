@@ -21,6 +21,7 @@
     "grunt-contrib-coffee": "~0.4.0",
     "grunt-contrib-watch": "~0.2.0a",
     "grunt-bower-task": "~0.3.4",
-    "grunt-bowercopy": "~1.0.0"
+    "grunt-bowercopy": "~1.0.0",
+    "grunt-contrib-clean": "~0.5.0"
   }
 }

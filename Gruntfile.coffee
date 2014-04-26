@@ -9,6 +9,13 @@ module.exports = (grunt) ->
         files: '**/*.coffee'
         tasks: ['coffee']
 
+    clean:
+      build:
+        src : [
+          'lib'
+          'js'
+        ]
+
     jasmine:
       src: '<%= meta.src %>'
       options:
@@ -33,16 +40,21 @@ module.exports = (grunt) ->
         options:
           destPrefix: 'lib'
         files:
-          'js/todomvc-common'  : 'todomvc-common/*.js'
-          'js/jquery'          : 'jquery/dist/jquery.js'
-          'js/underscore'      : 'underscore/*.js'
-          'css/todomvc-common' : 'todomvc-common/*.css'
+          'js/todomvc-common': 'todomvc-common/*.js'
+          'js': [
+            'jquery/dist/jquery.js'
+            'underscore/*.js'
+          ]
+          'css/todomvc-common': 'todomvc-common/*.css'
 
   grunt.loadNpmTasks('grunt-contrib-watch')
   grunt.loadNpmTasks('grunt-contrib-coffee')
   grunt.loadNpmTasks('grunt-contrib-jasmine')
+  grunt.loadNpmTasks('grunt-contrib-clean')
   grunt.loadNpmTasks('grunt-bowercopy')
 
 
+  grunt.registerTask('build', ['bowercopy', 'coffee'])
   grunt.registerTask('test', ['coffee', 'jasmine'])
   grunt.registerTask('default', ['test'])
+
