@@ -2,7 +2,10 @@ module.exports = (grunt) ->
 
   grunt.initConfig
     meta:
-      src: 'src/**/*.js'
+      src: [ 
+        'js/**/*.js' 
+        'lib/js/**/*.js'
+      ]
       specs: 'spec/**/*.js'
 
     watch:
@@ -14,18 +17,20 @@ module.exports = (grunt) ->
         src : [
           'lib'
           'js'
+          'bower_components'
         ]
 
     jasmine:
       src: '<%= meta.src %>'
       options:
         specs: '<%= meta.specs %>'
-        vendor: 'vendor/js/jasmine-given.js'
 
     coffee:
       compile:
         files:
           'js/app.js': [
+            'src/todo.coffee'
+            'src/todo_view.coffee'
             'src/app.coffee'
           ]
           'spec/app_spec.js': [
@@ -45,7 +50,10 @@ module.exports = (grunt) ->
             'jquery/dist/jquery.js'
             'underscore/*.js'
           ]
-          'css/todomvc-common': 'todomvc-common/*.css'
+          'css/todomvc-common': [
+            'todomvc-common/*.css'
+            'todomvc-common/*.png'
+          ]
 
   grunt.loadNpmTasks('grunt-contrib-watch')
   grunt.loadNpmTasks('grunt-contrib-coffee')
@@ -54,7 +62,7 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks('grunt-bowercopy')
 
 
-  grunt.registerTask('build', ['bowercopy', 'coffee'])
+  grunt.registerTask('build', ['clean', 'bowercopy', 'coffee'])
   grunt.registerTask('test', ['coffee', 'jasmine'])
   grunt.registerTask('default', ['test'])
 
