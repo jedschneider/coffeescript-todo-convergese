@@ -18,6 +18,7 @@ module.exports = (grunt) ->
           'lib'
           'js'
           'bower_components'
+          'spec/*.js'
         ]
 
     jasmine:

@@ -1,1 +1,1 @@
-class converge.App
+class @App
