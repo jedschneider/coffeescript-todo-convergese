@@ -1,4 +1,4 @@
-# coffeescript-jasmine-boilerplate
+# Todo MV* Application in CoffeeScript for @convergese
 
 coffeescript-jasmine-boilerplate is a small framework that was created with code katas in mind.  It gives you a quick way
 to begin writing and testing CoffeeScript with Jasmine.
@@ -14,11 +14,25 @@ $ git clone git@github.com:andrewvida/coffeescript-jasmine-boilerplate.git <your
 ```
 
 Then, install grunt and all of its dependencies from the root of your project:
+
 ``` bash
 $ npm install
+$ grunt build
+```
+
+The `build` task copies in vendored assets via bower.
+
+Then, run the watch process to compile your coffeescript on save.
+
+``` bash
+$ grunt watch
 ```
 
 ## About
+this project was largely copied and tweaked from the original; read
+along below for the associated information from the original.
+
+
 coffeescript-jasmine-boilerplate includes several plugins that allow you to focus on your kata.  grunt-contrib-watch has been configured
 to keep an eye on whenever CoffeeScript files change. grunt-contrib-coffee will automatically compile your CoffeeScript into JavaScript and grunt-contrib-jasmine
 executes your jasmine specs.
