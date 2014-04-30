@@ -46,7 +46,7 @@ module.exports = (grunt) ->
         options:
           destPrefix: 'lib'
         files:
-          'js/todomvc-common': 'todomvc-common/*.js'
+          # 'js/todomvc-common': 'todomvc-common/*.js'
           'js': [
             'jquery/dist/jquery.js'
             'underscore/*.js'

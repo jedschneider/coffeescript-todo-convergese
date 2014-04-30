@@ -1,7 +1,7 @@
 {
-  "name": "coffeescript-jasmine-boilerplate",
+  "name": "todomvc-in-coffeescript-example-app-for-2014-converge-SE",
   "version": "0.0.1",
-  "description": "A simple way to get started writing and testing coffeescript; good for katas!",
+  "description": "thankfully ripped off from github.com/andrewvida/coffeescript-jasmine-boilerplate",
   "scripts": {
     "test": "grunt test"
   },
@@ -10,18 +10,17 @@
     "url": "git://github.com/andrewvida/coffeescript-jasmine-boilerplate"
   },
   "author": {
-    "name": "Andrew Vida",
-    "email": "andy@testdouble.com",
-    "url": "http://www.testdouble.com"
+    "name": "Jed Schneider",
+    "email": "jed.schneider@modeset.com",
+    "url": "http://www.modeset.com"
   },
   "license": "BSD",
   "devDependencies": {
-    "grunt-contrib-jasmine": "latest",
     "grunt": "~0.4.0",
-    "grunt-contrib-coffee": "~0.4.0",
-    "grunt-contrib-watch": "~0.2.0a",
-    "grunt-bower-task": "~0.3.4",
     "grunt-bowercopy": "~1.0.0",
-    "grunt-contrib-clean": "~0.5.0"
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-watch": "~0.2.0a",
+    "grunt-contrib-coffee": "~0.4.0",
+    "grunt-contrib-jasmine": "latest"
   }
 }
