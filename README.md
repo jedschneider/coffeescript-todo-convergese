@@ -10,7 +10,7 @@ First, you'll need [node.js](http://nodejs.org) and [PhantomJS](http://phantom.j
 Next, clone the repo and create your project:
 
 ``` bash
-$ git clone git@github.com:andrewvida/coffeescript-jasmine-boilerplate.git <your-project-name>
+$ git clone git@github.com:jedschneider/coffeescript-todo-convergese.git <your-project-name>
 ```
 
 Then, install grunt and all of its dependencies from the root of your project:
