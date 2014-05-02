@@ -30,7 +30,9 @@ module.exports = (grunt) ->
       compile:
         files:
           'js/app.js': [
+            'src/eventable.coffee'
             'src/todo.coffee'
+            'src/todos.coffee'
             'src/todo_view.coffee'
             'src/app.coffee'
           ]
