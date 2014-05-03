@@ -1,95 +1,43 @@
 describe 'App', ->
 
-  it 'should be true', ->
-    expect(true).toBe(true)
-
-  describe 'Todo', ->
-
-    # it 'defaults to incomplete', ->
-      # todo = new Todo(title: 'test')
-      # expect(todo.completed).toEqual(false)
-
-    # it 'allows completed on create', ->
-      # todo = new Todo(title: 'test', completed: true)
-      # expect(todo.completed).toEqual(true)
-
-    # it 'allows an object without the keys', ->
-      # todo = new Todo()
-      # expect(todo.title).toEqual(null)
-
-  describe 'AppView', ->
-    app = event = null
+  describe 'on init', ->
+    app = null
 
     beforeEach ->
       app = new App("")
 
+    it 'creates a top level element', ->
+      expect( app.el instanceof jQuery ).toEqual(true)
+
+
     describe 'handleUserInput', ->
 
+      describe 'with invalid event data', ->
 
-      describe 'with valid input', ->
-        event = {
-          target: {
-            value: "test"
-          }
-        }
-
-        describe 'when I type', ->
-
-          it 'no-ops', ->
-            event.which = 65
-            spyOn(app, 'createNewTodo')
+        noOp = ->
+          where: (event)->
+            spyOn(app.todos, 'add')
             app.handleUserInput(event)
-            expect(app.createNewTodo).not.toHaveBeenCalled()
+            expect(app.todos.add).not.toHaveBeenCalled()
 
-        # describe 'when I press enter', ->
+        it 'guards against empty input', ->
+          noOp().where( which: 13, target: {value: ""} )
 
-          # it 'creates a todo', ->
-            # event.which = 13
-            # spyOn(app, 'createNewTodo')
-            # app.handleUserInput(event)
-            # expect(app.createNewTodo).toHaveBeenCalled()
+        it 'guards against blank input', ->
+          noOp().where( which: 13, target: {value: "        "} )
 
-          # describe 'and I insert spaces', ->
+        it 'gurards against keystrokes that do not mean Enter', ->
+          noOp().where( which: 11, target: {value: "test"} )
 
-            # it 'trims them', ->
-              # event.target.value = "   test"
-              # spy = spyOn(app, 'createNewTodo')
-              # app.handleUserInput(event)
-              # expect(spy).toHaveBeenCalledWith('test')
+      describe 'with valid event data', ->
 
-      # describe 'with invalid input', ->
+        event = null
 
-        # isNoOp = ->
-          # onEvent : (event)->
-            # console.log "event is #{JSON.stringify(event)}"
-            # spyOn(app, 'createNewTodo')
-            # app.handleUserInput(event)
-            # expect(app.createNewTodo).not.toHaveBeenCalled()
+        beforeEach ->
+          event = {which: 13, target: {value: "test"}}
 
-
-        # describe 'when value is blank', ->
-
-          # it 'no-ops', ->
-            # isNoOp().onEvent(event: {which: 13, target: {value: ""}})
-            # # isNoOp().where(_.extend(event, target: {value: ""}))
-
-        # describe 'when the value is just spaces', ->
-
-          # it 'no-ops', ->
-            # isNoOp().onEvent
-              # event:
-                # which: 13,
-                # target:
-                  # value: "       "
-
-          # # it 'no-ops', ->
-            # # isNoOp().onEvent(
-              # # {event:
-                # # which: 13,
-                # # target: {
-                  # # value: "       "
-                # # }
-              # # }
-            # # )
-
+        it 'creates a new todo when the event is valid', ->
+            spyOn(app.todos, 'add')
+            app.handleUserInput(event)
+            expect(app.todos.add).toHaveBeenCalled()
 

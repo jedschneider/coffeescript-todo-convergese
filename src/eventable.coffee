@@ -1,10 +1,12 @@
 class @Eventable
+
   constructor: ->
     @events = {}
 
   on: (event, callback)->
-    @events[event] = callback
-  
-  trigger: (event)=>
-    @events[event]?.apply(@, arguments)
+    @events[event] = {callback: callback, context: @}
+
+  trigger: (event, rest...)->
+    evt = @events[event]
+    evt.callback?.apply(evt.context, rest) if evt
 
