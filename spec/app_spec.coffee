@@ -26,7 +26,7 @@ describe 'App', ->
         it 'guards against blank input', ->
           noOp().where( which: 13, target: {value: "        "} )
 
-        it 'gurards against keystrokes that do not mean Enter', ->
+        it 'guards against keystrokes that do not mean Enter', ->
           noOp().where( which: 11, target: {value: "test"} )
 
       describe 'with valid event data', ->
